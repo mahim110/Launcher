@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone Style Launcher</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="launcher">
+        <div class="grid-container">
+            <!-- Icons will go here -->
+            <div class="app-icon">App 1</div>
+            <div class="app-icon">App 2</div>
+            <div class="app-icon">App 3</div>
+            <div class="app-icon">App 4</div>
+            <div class="app-icon">App 5</div>
+            <div class="app-icon">App 6</div>
+            <div class="app-icon">App 7</div>
+            <div class="app-icon">App 8</div>
+            <div class="app-icon">App 9</div>
+            <div class="app-icon">App 10</div>
+            <div class="app-icon">App 11</div>
+            <div class="app-icon">App 12</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 500px;
+    width: 100%;
+}
+
+/* App Icon Style */
+.app-icon {
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.app-icon:hover {
+    transform: scale(1.1);
+}/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Style */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f5;
+}
+
+/* Launcher Styles */
+.launcher {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.grid-container {
+const HomeScreen = () => {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Home Screen</Text>
+    </View>
+  );
+};
+
+const AppDrawer = createDrawerNavigator();
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <AppDrawer.Navigator initialRouteName="Home">
+        <AppDrawer.Screen name="Home" component={HomeScreen} />
+      </AppDrawer.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default App;npx react-native run-android    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 10,
+    elevation: 3,  // Shadow for Android
+    shadowColor: '#000', // iOS shadow
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  appText: {
+    fontSize: 18,
+    color: '#333',
+    fontWeight: 'bold',
+  },
+});
+
+export default App;npm install @react-navigation/native
+npm install @react-navigation/stack
+npm install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context
+npx pod-install ios  # For iOSimport React from 'react';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import { View, Text } from 'react-native';
+
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f5',
+  },
+  gridContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    width: screenWidth * 0.9,
+  },
+  appIcon: {
+    backgroundColor: '#fff',
+    borderRadius: 50,
+    width: 80,
+    height: 80,
+// Get screen width for responsive design
+const screenWidth = Dimensions.get('window').width;
+
+const App = () => {
+  // Handle icon press
+  const handlePress = (appName) => {
+    Alert.alert(`${appName} Pressed!`);
+  };
+
+  // Icons array for the apps
+  const apps = ['App 1', 'App 2', 'App 3', 'App 4', 'App 5', 'App 6', 'App 7', 'App 8', 'App 9', 'App 10', 'App 11', 'App 12'];
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.gridContainer}>
+        {apps.map((app, index) => (
+          <TouchableOpacity key={index} style={styles.appIcon} onPress={() => handlePress(app)}>
+            <Text style={styles.appText}>{app}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+    </View>
+// JavaScript for swipe gestures (optional)
+let startTouchX = 0;
+
+document.querySelector(".launcher").addEventListener("touchstart", (e) => {
+    startTouchX = e.touches[0].clientX;
+});
+
+document.querySelector(".launcher").addEventListener("touchend", (e) => {
+    let endTouchX = e.changedTouches[0].clientX;
+    if (startTouchX - endTouchX > 50) {
+        console.log("Swipe Left");
+        // Implement swipe left action
+    }
+    if (endTouchX - startTouchX > 50) {
+        console.log("Swipe Right");
+        // Implement swipe right action
+    }
+});npm install -g react-native-clinpx react-native init MyLauncherApp
+cd MyLauncherAppimport React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, Dimensions } from 'react-native';
